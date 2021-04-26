@@ -1,0 +1,26 @@
+@import "./scss/index.scss";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  background-color: $background-grey-light;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+main {
+  min-height: calc(100vh - 15vh - 75px);
+}
+@media screen and (max-width: $media-breackpoint-up-xl) {
+  main {
+    min-height: calc(100vh - 15vh - 150px);
+  }
+}
