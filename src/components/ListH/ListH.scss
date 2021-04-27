@@ -2,7 +2,7 @@
 .list {
   padding-bottom: 1em;
   h2 {
-    margin-left: 15px;
+    margin-left: 30px;
   }
   &_title {
     width: 70%;
@@ -31,10 +31,11 @@
 
     &-item {
       text-align: center;
-      min-width: 180px;
+      width: auto;
       margin: 0 10px;
       &-container {
         height: 100%;
+        min-width: 190px;
         display: flex;
         position: relative;
         flex-direction: column;

@@ -20,4 +20,10 @@ const initialFetchApi = async () => {
   };
 };
 
-export { initialFetchApi };
+const searchFetchApi = async (name: string, page: number = 1) => {
+  const url_search = `${url_base}search/movie?api_key=${REACT_APP_API_TMDB}&language=en-EN&query=${name}&page=${page}`;
+  const search = await axios.get<FetchMovie>(url_search);
+  return search.data;
+};
+
+export { initialFetchApi, searchFetchApi };

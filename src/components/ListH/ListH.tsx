@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import NotImageH from '../../assets/NotImageH.png';
-import ListMovie from '../Skeleton/ListMovie';
+import SkeletonMovie from '../Skeleton/ListMovie';
 import { Movie } from '../../interface/movieHomeInterface';
 
 import "./ListH.scss"
@@ -45,7 +45,7 @@ const ListH = (props: listH) => {
                     )
                 }) : loader.map((item: number) => (
                     <div key={item} className="list_scroll-item">
-                        <ListMovie />
+                        <SkeletonMovie />
                     </div>
                 ))}
             </div>

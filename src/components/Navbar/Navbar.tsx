@@ -10,11 +10,14 @@ const Navbar = () => {
     const [search, setSearch] = useState<string>("")
     let history = useHistory();
     const searchApi = () => {
-        history.push({
-            pathname: "/search",
-            search: "?query=" + search,
-            state: { search },
-        });
+        if (search !== "") {
+            setSearch("")
+            history.push({
+                pathname: "/search",
+                search: "?query=" + search,
+                state: { search },
+            });
+        }
     }
     const handleChange = (event: any) => {
         setSearch(event.target.value);
