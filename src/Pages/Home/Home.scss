@@ -1,0 +1,19 @@
+@import "../../scss/index.scss";
+.home {
+  &_header {
+    height: 10px;
+    background-color: $primary-color;
+    padding: 10px 15px 35px 15px;
+    position: relative;
+    z-index: 0;
+  }
+  &_list {
+    position: relative;
+    padding-top: 10px;
+    margin-top: -40px;
+    z-index: 2;
+    background-color: $background-light;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 3em;
+  }
+}

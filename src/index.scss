@@ -8,7 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
-  background-color: $background-grey-light;
+  background-color: $background-light;
 }
 
 code {
@@ -23,4 +23,30 @@ main {
   main {
     min-height: calc(100vh - 15vh - 150px);
   }
+}
+a {
+  text-decoration: none;
+}
+
+@keyframes loader {
+  0% {
+    background-position: -190px 0;
+  }
+  100% {
+    background-position: 190px 0;
+  }
+}
+
+.loader-effect {
+  background-color: $background-gradient;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    90deg,
+    $background-gradient 0%,
+    rgba(0, 0, 0, 0.05) 20%,
+    $background-gradient2 40%,
+    $background-gradient 100%
+  );
+  background-size: 190px;
+  animation: loader 1.5s infinite linear;
 }
