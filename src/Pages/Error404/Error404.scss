@@ -1,0 +1,47 @@
+@import "../../scss/index.scss";
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_content {
+    margin-top: 4vh;
+    max-width: 600px;
+    text-align: center;
+    h1 {
+      line-height: 1em;
+      font-size: 8vh;
+    }
+    h4 {
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      color: $font-dark;
+      font-size: 4vh;
+    }
+    p {
+      color: $font-dark;
+      font-size: 3vh;
+    }
+    &-btns {
+      margin: 25px 0;
+      display: inline-flex;
+      a {
+        display: inline-block;
+        margin: 0 10px;
+        text-decoration: none;
+        border: 2px solid $primary-color;
+        color: $primary-color;
+        font-weight: 500;
+        padding: 10px 25px;
+        border-radius: 25px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: $primary-color;
+          color: $font-light;
+        }
+      }
+    }
+  }
+}
