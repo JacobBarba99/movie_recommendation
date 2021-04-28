@@ -1,0 +1,171 @@
+@import "../../../scss/index.scss";
+.movie {
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding: 0 !important;
+  &_backImage {
+    height: 350px;
+    margin: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    &::before {
+      border: 2px $background-grey solid;
+      background: $background-gradient;
+      content: "";
+      width: 80%;
+      height: 350px;
+      position: absolute;
+      overflow: hidden;
+      top: 0;
+      left: 10%;
+      border-radius: 10px;
+      z-index: -1;
+      transform: skewY(-2.2deg);
+      transform-origin: 0 0;
+      -webkit-backface-visibility: hidden;
+    }
+  }
+  &_main {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 92.5%;
+    z-index: 2;
+    height: 350px;
+    top: -10px;
+    &-groupImage {
+      flex: 1;
+      position: relative;
+      top: -100px;
+      &-image {
+        width: 200px;
+        height: 300px;
+        border-radius: 10px;
+        background-color: $background-gradient;
+        border: 2px $background-grey solid;
+      }
+      &-group {
+        display: flex;
+        &-genres {
+          height: 30px;
+          width: 70px;
+          border-radius: 10px;
+          margin: 10px 2.5px;
+          background-color: $background-gradient;
+          border: 2px $background-grey solid;
+        }
+      }
+    }
+    &-description {
+      display: flex;
+      flex: 3;
+      flex-direction: column;
+      padding: 20px;
+      &-overview {
+        background-color: $background-gradient;
+        border: 2px $background-grey solid;
+        flex: 1;
+        border-radius: 10px;
+        width: 80%;
+      }
+      &-production {
+        display: flex;
+        justify-content: space-around;
+        height: 25vh;
+        width: 80%;
+        flex: 1;
+        margin-top: 10px;
+        &-logo {
+          height: 100px;
+          width: 100px;
+          border-radius: 15px;
+          background-color: $background-gradient;
+          border: 2px $background-grey solid;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .movie {
+    &_backImage::before {
+      width: 100%;
+      left: 0;
+    }
+    &_main-description {
+      padding-right: 0;
+      &-overview {
+        width: 100%;
+        height: 30px;
+      }
+      &-production {
+        width: 100%;
+        &-logo {
+          height: 50px;
+          width: 50px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 450px) {
+  .movie {
+    &_backImage,
+    &_backImage::before {
+      width: 0%;
+      height: 0;
+      border: 0;
+      left: 0;
+    }
+
+    &_main {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+      align-items: center;
+      &-groupImage {
+        display: flex;
+        position: relative;
+        align-items: center;
+        flex-direction: column;
+        top: 10px !important;
+        width: 100%;
+        &-image {
+          width: 100%;
+          height: 450px;
+          border-radius: 0px;
+        }
+        &-group {
+          display: flex;
+          width: 70%;
+          &-genres {
+            height: 20px;
+            width: 50px;
+            border: 0;
+          }
+        }
+      }
+      &-description {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        height: auto;
+        &-overview {
+          min-height: 80px;
+        }
+        &-production {
+          display: flex;
+          justify-content: space-around;
+          width: 100%;
+          &-logo {
+            height: 40px;
+            width: 40px;
+          }
+        }
+      }
+    }
+  }
+}
