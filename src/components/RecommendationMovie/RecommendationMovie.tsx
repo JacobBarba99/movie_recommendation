@@ -30,12 +30,13 @@ const RecommendationMovie = (props: propsInterface) => {
         <div className={index === imageIndex ? "recommendationMovie active" : "recommendationMovie "}>
             <div className="movie_card" >
                 <div className="backImage">
-                    <img src={backImage ? `http://image.tmdb.org/t/p/w500${backImage}` : NotImageH} />
+                    <img alt="movie" src={backImage ? `http://image.tmdb.org/t/p/w500${backImage}` : NotImageH} />
                 </div>
                 <div className="info_section">
                     <div className="movie_header">
                         <img
                             className="image"
+                            alt="movie"
                             src={image ? `http://image.tmdb.org/t/p/w500${image}` : NotImageH}
                         />
                         <div className="info">

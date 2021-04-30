@@ -4,12 +4,15 @@ import {
   FetchMovie,
   Movie,
 } from "../interface/movieHomeInterface";
+import {
+  predictListFetchApi,
+  recommendationListFetchApi,
+} from "./recommendation";
 
 const url_base = "https://api.themoviedb.org/3/";
 const { REACT_APP_API_TMDB } = process.env;
 const movies = [
   "Passengers",
-  "Guardians of the Galaxy",
   "Trolls",
   "Moonlight",
   "Underworld: Blood Wars",
@@ -55,25 +58,28 @@ const searchMovieFetchApi = async (id: string) => {
 
   search.data["providers"] = providers.data.results.US;
   search.data["video"] = video.data.results[0];
-  return search.data;
+
+  const recommendation = await predictListFetchApi(id);
+  return { data: search.data, recommendation };
 };
 
-const recommendationFetchApi = async () => {
+const recommendationFetchApi = async (array: string[] = movies) => {
   const movieRecommendation: Movie[] = [];
-  for (let i = 0; i < movies.length; i++) {
-    const data = await searchFetchApi(movies[i]);
+  for (let i = 0; i < array.length; i++) {
+    const data = await searchFetchApi(array[i]);
     movieRecommendation.push(data.results[0]);
   }
   return movieRecommendation;
 };
-const listSelectionFetchApi = async (
-  selectionRate: {
-    title: string;
-    rate: number | undefined;
-  }[]
-) => {
-  console.log("fds", selectionRate);
-  return;
+const listSelectionFetchApi = async (selectionRate: string[]) => {
+  const movie = [];
+  for (let i = 0; i < selectionRate.length; i++) {
+    const movie_recommend = await recommendationListFetchApi(selectionRate[i]);
+    const list_recommend = await recommendationFetchApi(movie_recommend);
+    movie.push(list_recommend);
+  }
+
+  return movie;
 };
 
 export {

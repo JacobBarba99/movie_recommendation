@@ -11,19 +11,17 @@ interface paramsId {
     id: string
 }
 
-
-
 const Movie = () => {
     const { id } = useParams<paramsId>()
     const [movie, setMovie] = useState<FetchAllMovie | undefined>()
     const [recommendation, setRecommendation] = useState<movieInterface[] | undefined>()
 
-    const searchMovie = async () => {
-        const response = await searchMovieFetchApi(id)
-        setMovie(response)
-    }
-
     useEffect(() => {
+        const searchMovie = async () => {
+            const response = await searchMovieFetchApi(id)
+            setMovie(response.data)
+            setRecommendation(response.recommendation)
+        }
         window.scrollTo(0, 0)
         setRecommendation(undefined)
         setMovie(undefined)
@@ -38,7 +36,7 @@ const Movie = () => {
     return (
         <>
             <InfoMovie {...movie} />
-            <ListH title="Recommendation" list={[]} />
+            <ListH title="Recommendation" list={recommendation} />
         </>
     )
 }

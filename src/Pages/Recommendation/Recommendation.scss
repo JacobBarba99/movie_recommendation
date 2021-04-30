@@ -40,3 +40,11 @@
     }
   }
 }
+header {
+  height: 30px;
+  background-color: $primary-color;
+  padding: 10px 15px 35px 15px;
+  position: relative;
+  z-index: 0;
+  color: $font-light;
+}

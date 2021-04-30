@@ -8,12 +8,14 @@ import { listSelectionFetchApi, recommendationFetchApi } from "../../api/movie"
 import "./Recommendation.scss"
 import { Movie } from "../../interface/movieHomeInterface"
 import Loading from "../../components/Loading"
+import ListH from "../../components/ListH"
 
 
 const Recommendation = () => {
     const [imageIndex, setImageIndex] = useState(0)
     const [loading, setLoading] = useState(true)
     const [recommendationCard, setRecommendationCard] = useState<Movie[]>([])
+    const [recommendation, setRecommendation] = useState<any>(null)
 
     const recommendationApi = async () => {
         setLoading(true)
@@ -54,15 +56,46 @@ const Recommendation = () => {
         recommendationCard[index].rate = rate
     }
 
-    const selection = () => {
-        const filter = recommendationCard.filter((item: Movie) => item.rate)
-        const selectionRate = filter.map((item: Movie) => { return { title: item.title, rate: item.rate } })
-        listSelectionFetchApi(selectionRate)
-
+    const selection = async () => {
+        setLoading(true)
+        const filter = recommendationCard.filter((item: Movie) => {
+            if (item.rate) {
+                return item.rate >= 2
+            }
+            return false
+        })
+        const selectionRate = filter.map((item: Movie) => { return item.title })
+        const arrayMovies = await listSelectionFetchApi(selectionRate)
+        if (arrayMovies) {
+            setLoading(false)
+            setRecommendation(arrayMovies)
+        }
     }
+
     if (loading) {
         return (<Loading />)
     }
+    if (recommendation) {
+        return (
+            <div className="recommendation_list" >
+                <header >
+                    <h2>
+                        Recomendaciones en base a tu seleccion
+                    </h2>
+                </header>
+                <div className="recommendation_list-movies" >
+                    {
+                        recommendation.map((item: any, index: number) => {
+                            return (
+                                <ListH key={index} title={item[0].title} list={item.slice(1, item.length)} />
+                            )
+                        })
+                    }
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div className="recommendation">
             <h2>Rate the movies you've already seen </h2>

@@ -15,7 +15,8 @@ const InfoMovie = (props: FetchAllMovie) => {
             </div>
             <div className="movieInfo-main">
                 <div className="movieInfo-main-image">
-                    <a ><img src={poster_path ? `http://image.tmdb.org/t/p/w500${poster_path}` : NotImageH} alt={title} /></a>
+                    <a href={`https://www.google.com/search?q=${title}&oq=${title}&aqs=chrome..69i57j35i39j0i131i433j0i433l2j69i60l3.574j0j7&sourceid=chrome&ie=UTF-8`}
+                    ><img src={poster_path ? `http://image.tmdb.org/t/p/w500${poster_path}` : NotImageH} alt={title} /></a>
                     <div className="movieInfo-main-image-genres">
                         {genres?.map((item: Genre) => (
                             <span key={item.id} className="movieInfo-main-image-genres-tag">{item.name}</span>
