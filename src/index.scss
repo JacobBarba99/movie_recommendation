@@ -52,3 +52,10 @@ a {
   background-size: 190px;
   animation: loader 1.5s infinite linear;
 }
+input[type="radio"] {
+  display: none;
+}
+.star {
+  cursor: pointer;
+  transition: color 200ms;
+}

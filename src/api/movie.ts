@@ -1,8 +1,26 @@
 import axios from "axios";
-import { FetchAllMovie, FetchMovie } from "../interface/movieHomeInterface";
+import {
+  FetchAllMovie,
+  FetchMovie,
+  Movie,
+} from "../interface/movieHomeInterface";
 
 const url_base = "https://api.themoviedb.org/3/";
 const { REACT_APP_API_TMDB } = process.env;
+const movies = [
+  "Passengers",
+  "Guardians of the Galaxy",
+  "Trolls",
+  "Moonlight",
+  "Underworld: Blood Wars",
+  "Star Trek Beyond",
+  "Search Party",
+  "Bad Moms",
+  "The Master",
+  "Perfume: The Story of a Murderer",
+  "G.I. Joe: Retaliation",
+  "Dragonball Evolution",
+];
 
 const initialFetchApi = async () => {
   const url_popular = `${url_base}movie/popular?api_key=${REACT_APP_API_TMDB}&language=en-ES&page=1`;
@@ -40,4 +58,28 @@ const searchMovieFetchApi = async (id: string) => {
   return search.data;
 };
 
-export { initialFetchApi, searchFetchApi, searchMovieFetchApi };
+const recommendationFetchApi = async () => {
+  const movieRecommendation: Movie[] = [];
+  for (let i = 0; i < movies.length; i++) {
+    const data = await searchFetchApi(movies[i]);
+    movieRecommendation.push(data.results[0]);
+  }
+  return movieRecommendation;
+};
+const listSelectionFetchApi = async (
+  selectionRate: {
+    title: string;
+    rate: number | undefined;
+  }[]
+) => {
+  console.log("fds", selectionRate);
+  return;
+};
+
+export {
+  initialFetchApi,
+  searchFetchApi,
+  searchMovieFetchApi,
+  recommendationFetchApi,
+  listSelectionFetchApi,
+};

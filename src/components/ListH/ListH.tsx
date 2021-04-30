@@ -14,6 +14,7 @@ const loader = [1, 2, 3, 4, 5, 6, 7, 8]
 
 const ListH = (props: listH) => {
     const { title, list } = props
+    console.log(list)
 
     return (
         <div className="list">
