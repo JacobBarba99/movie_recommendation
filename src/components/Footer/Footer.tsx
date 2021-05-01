@@ -1,11 +1,18 @@
-
+import { Link } from "react-router-dom"
+import tmdb from "../../assets/tmdb.svg"
 import "./Footer.scss"
 
 const Footer = () => {
     return (
         <div className="footer">
-            <h4>aplicacion hecha por </h4>
-            <h4>Se uso la api de tmdb para tener informacion acerca de las peliculas </h4>
+            <div className="footer_links">
+                <h4>&copy; Jesús Lares Contreras 2021 </h4>
+                <Link to="/" >Home</Link>
+                <Link to="/recommendation" >Recommendation</Link>
+            </div>
+            <a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer" >
+                <img className="footer_img" alt="Logo TMDB" src={tmdb} />
+            </a>
         </div>
     )
 }
