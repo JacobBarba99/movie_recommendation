@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import Layout from "./Pages/Layout";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";

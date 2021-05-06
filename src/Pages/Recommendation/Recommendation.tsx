@@ -52,7 +52,7 @@ const Recommendation = () => {
             <div className="recommendation_list" >
                 <header >
                     <h2>
-                        Recomendaciones en base a tu seleccion
+                        Recommendations based on your selection
                     </h2>
                 </header>
                 <div className="recommendation_list-movies" >
@@ -70,7 +70,7 @@ const Recommendation = () => {
 
     return (
         <div className="recommendation">
-            <h1>Rate the movies you've already seen </h1>
+            <h2> Evaluate these movies according to your tastes.<br /> You can slide or press any button.</h2>
             <Deck data={recommendationCard} finishSelection={finishSelection} />
         </div>
     )
