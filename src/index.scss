@@ -1,13 +1,23 @@
 @import "./scss/index.scss";
+* {
+  box-sizing: border-box;
+}
 
+html,
 body {
+  overscroll-behavior-y: contain;
   margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  user-select: none;
+}
+body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
   background-color: $background-light;
 }
 
@@ -51,11 +61,4 @@ a {
   );
   background-size: 190px;
   animation: loader 1.5s infinite linear;
-}
-input[type="radio"] {
-  display: none;
-}
-.star {
-  cursor: pointer;
-  transition: color 200ms;
 }

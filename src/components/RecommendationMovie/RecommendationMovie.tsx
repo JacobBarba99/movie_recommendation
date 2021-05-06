@@ -1,62 +1,44 @@
-import { useState } from "react"
-import StartRating from "../StartRating"
-import NotImageH from "../../assets/NotImageH.png"
 
-import "./RecommendationMovie.scss"
+import "./RecommendationMovie.scss";
 
 interface propsInterface {
-    index: number,
-    imageIndex: number,
-    title: string,
-    year: string,
-    overview: string
-    backImage: string
-    image: string
-    view: any
+    index: number;
+    title: string;
+    year: string;
+    overview: string;
+    backImage: string;
+    image: string;
 }
 
 const RecommendationMovie = (props: propsInterface) => {
-    const { index, imageIndex, title,
-        year,
-        overview,
-        backImage,
-        image, view } = props
-    const [rating, setRating] = useState<number>(0)
-    const setDataRating = (rating: number) => {
-        setRating(rating)
-        view(index, rating)
-    }
-    return (
-        <div className={index === imageIndex ? "recommendationMovie active" : "recommendationMovie "}>
-            <div className="movie_card" >
-                <div className="backImage">
-                    <img alt="movie" src={backImage ? `http://image.tmdb.org/t/p/w500${backImage}` : NotImageH} />
-                </div>
-                <div className="info_section">
-                    <div className="movie_header">
-                        <img
-                            className="image"
-                            alt="movie"
-                            src={image ? `http://image.tmdb.org/t/p/w500${image}` : NotImageH}
-                        />
-                        <div className="info">
-                            <h2>{title}</h2>
-                            <h4>{year}</h4>
-                        </div>
-                    </div>
-                    <div className="movie_desc">
-                        <p className="text">
-                            {overview}
-                        </p>
-                    </div>
-                </div>
+    const { title, year, overview, backImage, image } = props;
 
+    return (
+        <div className="card">
+            <div className="card_backImage">
+                <img
+                    src={`http://image.tmdb.org/t/p/w500${backImage}`}
+                    alt="profilePicture"
+                />
             </div>
-            <div className="start">
-                <StartRating rating={rating} setRating={setDataRating} />
+            <div className="card_text">
+                <div className="card_text-movie">
+                    <img
+                        className="card_text-movie-image"
+                        alt="movie"
+                        src={`http://image.tmdb.org/t/p/w500${image}`}
+                    />
+                    <div className="card_text-movie-info">
+                        <h3>{title}</h3>
+                        <h5>{year}</h5>
+                    </div>
+                </div>
+                <div className="card_text-overview">
+                    <p className="card_text-overview-text">{overview}</p>
+                </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default RecommendationMovie
+export default RecommendationMovie;

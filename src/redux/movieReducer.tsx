@@ -58,9 +58,10 @@ export const intialPageAction = () => async (dispatch: any) => {
 };
 
 
-export const recommendationAction = (data: any) => async (dispatch: any) => {
+export const recommendationAction = (data: any, setLoading: any) => async (dispatch: any) => {
   const arrayMovies = await listSelectionFetchApi(data)
   localStorage.setItem(key, JSON.stringify(data))
+  setLoading(false)
   dispatch({
     type: "RECOMMENDATION_LIST",
     payload: {

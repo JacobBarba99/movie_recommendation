@@ -22,7 +22,6 @@ const movies = [
   "The Master",
   "Perfume: The Story of a Murderer",
   "G.I. Joe: Retaliation",
-  "Dragonball Evolution",
 ];
 
 const initialFetchApi = async () => {

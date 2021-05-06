@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <div className="footer">
             <div className="footer_links">
-                <h4>&copy; Jesús Lares Contreras 2021 </h4>
+                <h4>&copy; Movie Recommendation 2021 </h4>
                 <Link to="/" >Home</Link>
                 <Link to="/recommendation" >Recommendation</Link>
             </div>
