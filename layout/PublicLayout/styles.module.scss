@@ -23,12 +23,12 @@
 
 @media screen and (min-width: 800px) {
   .nav {
-    height: 8vh;
+    height: 10vh;
   }
   .main {
-    min-height: calc(100vh - 15vh - 8vh);
+    min-height: calc(100vh - 15vh - 10vh);
   }
   .footer {
-    height: 20vh;
+    height: 15vh;
   }
 }
