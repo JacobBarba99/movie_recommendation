@@ -24,6 +24,7 @@ const ListH = (props: listH) => {
             <div className="list_scroll">
 
                 {list?.length !== 0 ? list?.map((item: Movie, index: number) => {
+                    console.log(item.title, item.poster_path);
                     if (index > 10) {
                         return null
                     }

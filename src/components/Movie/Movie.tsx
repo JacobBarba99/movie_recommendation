@@ -10,6 +10,7 @@ interface propsInterface {
 
 const Movie = (props: propsInterface) => {
     const { movie } = props
+    console.log(movie);
     return (
         <Link
             className="movie"

@@ -12,7 +12,7 @@ interface propsInterface {
 
 const RecommendationMovie = (props: propsInterface) => {
     const { title, year, overview, backImage, image } = props;
-
+    console.log(title, year, overview, backImage, image);
     return (
         <div className="card">
             <div className="card_backImage">
