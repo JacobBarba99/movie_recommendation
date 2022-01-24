@@ -1,0 +1,37 @@
+.footer {
+  height: auto;
+  min-height: 10vh;
+  background-color: #1b2c3e;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+}
+.links {
+  white-space: normal;
+  text-align: center;
+  align-items: center;
+  min-width: 270px;
+  h4 {
+    margin-block-start: 1vw;
+    margin-block-end: 1vw;
+  }
+  a {
+    display: block;
+    color: white;
+    padding: 2px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .footer {
+    padding: 10px;
+  }
+  .img {
+    padding: 20px 30px 10px 30px;
+  }
+}

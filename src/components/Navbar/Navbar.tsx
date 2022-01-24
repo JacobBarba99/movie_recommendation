@@ -1,57 +1,101 @@
-import { useState } from 'react';
-import { Link, NavLink, useHistory } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'
-import Logo from "../../assets/Logo.png"
+import { FormEvent, SyntheticEvent, useEffect, useState } from "react";
+import Link from "next/link";
 
-import "./Navbar.scss"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
+import Logo from "../../../public/Logo.png";
+
+import style from "./Navbar.module.scss";
+import Image from "next/image";
 
 const Navbar = () => {
-    const [search, setSearch] = useState<string>("")
-    let history = useHistory();
-    const searchApi = () => {
-        if (search !== "") {
-            setSearch("")
-            history.push({
-                pathname: "/search",
-                search: "?query=" + search,
-                state: { search },
-            });
-        }
-    }
-    const handleChange = (event: any) => {
-        setSearch(event.target.value);
-    }
-    return (
-        <>
-            <input type="checkbox" id="check" />
-            <nav >
-                <Link to="/" className=" logo">
-                    <div className="logo_text">
-                        Movie <strong>R</strong>ecommendation
-                    </div>
-                    <img src={Logo} className="logo_img" alt="logo" />
-                </Link>
-                <form className="search_box" onSubmit={(e) => {
-                    e.preventDefault()
-                    searchApi()
-                }} >
-                    <input value={search} type="search" onChange={handleChange} placeholder="Buscar pelicula" required />
-                    <span className="fa fa-search" onClick={searchApi}>
-                        <FontAwesomeIcon icon={faSearch} />
-                    </span>
-                </form>
-                <ol>
-                    <li><NavLink to="/" exact>Home</NavLink></li>
-                    <li>  <NavLink to="/recommendation" exact >Recomendaciones</NavLink></li>
-                </ol>
-                <label htmlFor="check" className="bar" >
-                    <span id="bars" ><FontAwesomeIcon icon={faBars} /></span>
-                    <span id="times"><FontAwesomeIcon icon={faTimes} /></span>
-                </label>
-            </nav >
-        </>
-    )
-}
+  const [search, setSearch] = useState<string>("");
+  const [check, setCheck] = useState<boolean>(false);
 
-export default Navbar
+  const handleChange = (event: FormEvent<HTMLInputElement>) => {
+    setSearch(event.currentTarget.value);
+  };
+  const handleSubmit = (e: SyntheticEvent) => {
+    e.preventDefault();
+    console.log("Searching...");
+  };
+  useEffect(() => {
+    window.addEventListener("click", (e: MouseEvent) => {
+      if (document.getElementById("toggle-navbar")) {
+        if (!document.getElementById("nav")?.contains(e.target as Node)) {
+          if (
+            !document.getElementById("toggle")?.contains(e.target as Node) &&
+            !document
+              .getElementById("toggle-navbar")
+              ?.contains(e.target as Node)
+          ) {
+            setCheck(false);
+          }
+        }
+      }
+    });
+    return window.removeEventListener("click", () => {});
+  }, []);
+
+  return (
+    <header className={style.header}>
+      <Link href="/">
+        <a className={style.logo}>
+          <h1>
+            Movie <strong>R</strong>ecommendation
+          </h1>
+          <Image
+            src={Logo}
+            alt="Movie Recommendation"
+            height={40}
+            width={80}
+            quality={50}
+          />
+        </a>
+      </Link>
+      <input
+        className={style.nav_toggle}
+        onChange={() => setCheck((e) => !e)}
+        checked={check}
+        type="checkbox"
+        id="toggle-navbar"
+      />
+      <label
+        htmlFor="toggle-navbar"
+        id="toggle"
+        className={style.nav_toggle_label}
+      >
+        <span />
+      </label>
+      <form className={style.search_box} onSubmit={handleSubmit}>
+        <input
+          value={search}
+          type="search"
+          onChange={handleChange}
+          placeholder="Search movie"
+          required
+        />
+        <span>
+          <FontAwesomeIcon icon={faSearch} size="sm" />
+        </span>
+      </form>
+      <nav className={style.nav} id="nav">
+        <ul>
+          <li>
+            <Link href="/">
+              <a>Home</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/recommendation">
+              <a>Recomendaciones</a>
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
+
+export default Navbar;

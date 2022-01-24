@@ -1,20 +1,27 @@
-import { Link } from "react-router-dom"
-import tmdb from "../../assets/tmdb.svg"
-import "./Footer.scss"
+import Image from "next/image";
+import Link from "next/link";
+import tmdb from "../../../public/tmdb.svg";
+
+import style from "./Footer.module.scss";
 
 const Footer = () => {
-    return (
-        <div className="footer">
-            <div className="footer_links">
-                <h4>&copy; Movie Recommendation 2021 </h4>
-                <Link to="/" >Home</Link>
-                <Link to="/recommendation" >Recommendation</Link>
-            </div>
-            <a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer" >
-                <img className="footer_img" alt="Logo TMDB" src={tmdb} />
-            </a>
-        </div>
-    )
-}
+  return (
+    <footer className={style.footer}>
+      <div className={style.links}>
+        <Link href="/">Home</Link>
+        <Link href="/recommendation">Recommendation</Link>
+        <h4>&copy; Movie Recommendation 2022</h4>
+      </div>
+      <a
+        className={style.img}
+        href="https://www.themoviedb.org/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <Image width={350} src={tmdb} alt="The Movie Database" />
+      </a>
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;
